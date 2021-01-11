@@ -1,6 +1,6 @@
 class Transaction
 
-  attr_reader :value, :date
+  attr_reader :value, :date, :type
 
   def initialize(value, type)
     @value = value
