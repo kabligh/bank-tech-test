@@ -10,4 +10,8 @@ describe Transaction do
     expect(transaction.value).to eq 1000
   end
 
+  it 'records the date a transaction was made' do
+    time = Time.now
+    expect(transaction.date).to eq time.strftime("%d/%m/%Y")
+  end
 end
