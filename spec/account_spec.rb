@@ -14,9 +14,9 @@ describe Account do
   end
 
   describe '#deposit' do
-    # let(:credit_transaction) { double(value: 1000, type: :credit) }
-    # let(:transaction_class) { double(new: credit_transaction) }
-    let(:account) { Account.new }
+    let(:credit_transaction) { double(value: 0, type: :credit) }
+    let(:transaction_class) { double(new: credit_transaction) }
+    let(:account) { Account.new(transaction_class) }
 
     it 'increases the account balance by amount in argument' do
       account.deposit(1000)
@@ -30,10 +30,9 @@ describe Account do
   end
 
   describe '#withdraw' do
-    let(:credit_transaction) { double(value: 1000, type: :credit) }
-    let(:debit_transaction) { double(value: 500, type: :debit) }
-    # let(:transaction_class) { double(new: debit_transaction) }
-    let(:account) { Account.new }
+    let(:debit_transaction) { double(value: 0, type: :debit) }
+    let(:transaction_class) { double(new: debit_transaction) }
+    let(:account) { Account.new(transaction_class) }
 
     it 'reduces the account balance by amount in argument' do
       account.deposit(1000)
