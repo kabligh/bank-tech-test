@@ -46,4 +46,10 @@ describe Account do
       expect(account.transaction_history[1].type).to eq :debit
     end
   end
+
+  describe '#print_statement' do
+    it 'returns the headings when no money is deposited or withdrawn' do
+      expect(subject.print_statement).to eq 'date || credit || debit || balance'
+    end
+  end
 end

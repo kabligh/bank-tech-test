@@ -20,4 +20,14 @@ class Account
     @balance -= amount
     @transaction_history << transaction.new(amount, :debit)
   end
+
+  def print_statement
+    statement_header
+  end
+
+  private
+
+  def statement_header
+    'date || credit || debit || balance'
+  end
 end
