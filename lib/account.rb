@@ -26,7 +26,7 @@ class Account
     puts(statement_header + list_transaction)
   end
 
-  # private
+  private
 
   def statement_header
     "date || credit || debit || balance\n"
