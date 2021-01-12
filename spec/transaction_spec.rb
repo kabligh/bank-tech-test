@@ -3,20 +3,19 @@
 require 'transaction'
 
 describe Transaction do
-  let(:value) { 1000 }
-  let(:type) { :credit }
-  subject(:transaction) { Transaction.new(value, type) }
+  let(:credit_transaction) { Transaction.new(credit: 1000, balance: 1000) }
+  let(:debit_transaction) { Transaction.new(debit: 500, balance: 500)}
 
-  it 'records a positive value if transaction is credit' do
-    expect(transaction.value).to eq 1000
+  it 'records a credit value if transaction is credit' do
+    expect(credit_transaction.credit).to eq 1000
   end
 
-  it 'records the type of transaction' do
-    expect(transaction.type).to eq :credit
+  it 'records a debit value if transaction' do
+    expect(debit_transaction.debit).to eq 500
   end
 
   it 'records the date a transaction was made' do
     time = Time.now
-    expect(transaction.date).to eq time.strftime('%d/%m/%Y')
+    expect(credit_transaction.date).to eq time.strftime('%d/%m/%Y')
   end
 end
