@@ -31,7 +31,7 @@ describe Account do
     end
 
     it 'adds the amount to the transaction credit' do
-      expect(transaction).to receive(:new).with({ credit: 1000, balance: 1000 })
+      expect(transaction).to receive(:new).with(credit: 1000, balance: 1000)
       account.deposit(1000)
     end
   end
@@ -58,9 +58,9 @@ describe Account do
   end
 
   describe '#print_statement' do
-    let(:transaction_history) { [credit_transaction, debit_transaction] }
-    let(:credit_transaction) { double(:credit_transaction, credit: 1000, balance: 1000, date: 12/01/2021) }
-    let(:debit_transaction) { double(:debit_transaction, debit: 500, balance: 500, date: 12/01/2021) }
+    # let(:transaction_history) { [credit_transaction, debit_transaction] }
+    # let(:credit_transaction) { double(:credit_transaction, credit: 1000, balance: 1000, date: 12/01/2021) }
+    # let(:debit_transaction) { double(:debit_transaction, debit: 500, balance: 500, date: 12/01/2021) }
     let(:account) { Account.new }
 
     text = "date || credit || debit || balance\n"\
@@ -70,7 +70,7 @@ describe Account do
     it 'prints transactions in correct format' do
       account.deposit(1000)
       account.withdraw(500)
-      expect{ account.print_statement }.to output(text).to_stdout
+      expect { account.print_statement }.to output(text).to_stdout
     end
   end
 end

@@ -46,5 +46,4 @@ class Account
     end
     list.join("")
   end
-
 end
