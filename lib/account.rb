@@ -28,16 +28,16 @@ class Account
 
   private
 
-  def statement_header
-    "date || credit || debit || balance\n"
-  end
-
   def create_credit(amount)
     @transaction.new(credit: amount, balance: @balance)
   end
 
   def create_debit(amount)
     @transaction.new(debit: amount, balance: @balance)
+  end
+
+  def statement_header
+    "date || credit || debit || balance\n"
   end
 
   def list_transaction
