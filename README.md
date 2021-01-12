@@ -8,21 +8,40 @@ Ruby, RSpec, Rubocop, Simple Coverage
 
 Program fully tested, with 100% coverage.
 
-* You should be able to interact with your code via a REPL like IRB or the JavaScript console. (You don't need to implement a command line interface that takes input from STDIN.)
-* Deposits, withdrawal.
-* Account statement (date, amount, balance) printing.
-* Data can be kept in memory (it doesn't need to be stored to a database or anything).
-
-### Acceptance criteria
-
-* Given a client makes a deposit of 1000 on 10-01-2012
-* And a deposit of 2000 on 13-01-2012
-* And a withdrawal of 500 on 14-01-2012
-* When she prints her bank statement
-* Then she would see
+## Quick launch
 ```
+$ git clone https://github.com/kabligh/bank-tech-test.git
+$ cd bank-tech-test
+$ bundle
+$ irb
+$ require './lib/account.rb'
+```
+
+### Example usage
+
+```
+# Create an account
+> account = Account.new
+
+# Check balance
+> account.balance
+=> 0
+
+# Try to withdraw money (before depositing)
+> account.withdraw(10)
+=> RuntimeError (Not enough funds)
+
+# Deposit money
+> account.deposit(100)
+
+# Print bank statement
+> account.print_statement
 date || credit || debit || balance
-14/01/2012 || || 500.00 || 2500.00
-13/01/2012 || 2000.00 || || 3000.00
-10/01/2012 || 1000.00 || || 1000.00
+12/01/2021 || 100.00 ||  || 100.00
 ```
+
+## Process
+
+* Broke the task down into two main classes, Account and Transaction
+* Visualised how they would interact with class diagrams
+* Used TDD, starting with the most simple test cases
