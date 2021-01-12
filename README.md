@@ -1,8 +1,12 @@
 # Bank tech test
 
-Practice tech test, week 10 of Makers bootcamp
+Practice tech test, week 10 of Makers bootcamp. [Full instructions here](https://github.com/makersacademy/course/blob/master/individual_challenges/bank_tech_test.md)
 
-### Requirements
+## Tech used
+
+Ruby, RSpec, Rubocop, Simple Coverage
+
+Program fully tested, with 100% coverage.
 
 * You should be able to interact with your code via a REPL like IRB or the JavaScript console. (You don't need to implement a command line interface that takes input from STDIN.)
 * Deposits, withdrawal.

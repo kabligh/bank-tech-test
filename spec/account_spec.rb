@@ -23,11 +23,12 @@ describe Account do
 
     it 'increases the account balance by amount in argument' do
       account.deposit(1000)
-      expect(account.balance).to eq 1000
+      expect(account.balance).to eq 1000.00
     end
 
     it 'adds a transaction to the transactions history array' do
-      expect { account.deposit(1000) }.to change { account.transaction_history.length }.by(1)
+      account.deposit(1000)
+      expect(account.transaction_history.length).to eq 1
     end
 
     it 'adds the amount to the transaction credit' do
@@ -48,12 +49,13 @@ describe Account do
     it 'reduces the account balance by amount in argument' do
       account.deposit(1000)
       account.withdraw(500)
-      expect(account.balance).to eq 500
+      expect(account.balance).to eq 500.00
     end
 
     it 'adds a transaction to the transactions history array' do
       account.deposit(1000)
-      expect { account.withdraw(500) }.to change { account.transaction_history.length }.by(1)
+      account.withdraw(500)
+      expect(account.transaction_history.length).to eq 2
     end
   end
 
@@ -64,8 +66,8 @@ describe Account do
     let(:account) { Account.new }
 
     text = "date || credit || debit || balance\n"\
-    "12/01/2021 ||  || 500 || 500\n"\
-    "12/01/2021 || 1000 ||  || 1000\n"
+    "12/01/2021 ||  || 500.00 || 500.00\n"\
+    "12/01/2021 || 1000.00 ||  || 1000.00\n"
 
     it 'prints transactions in correct format' do
       account.deposit(1000)

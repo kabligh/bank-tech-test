@@ -42,8 +42,13 @@ class Account
 
   def list_transaction
     list = @transaction_history.reverse.map do |transaction|
-      "#{transaction.date} || #{transaction.credit} || #{transaction.debit} || #{transaction.balance}\n"
+      "#{transaction.date} || #{format(transaction.credit)} || "\
+      "#{format(transaction.debit)} || #{format(transaction.balance)}\n"
     end
     list.join("")
+  end
+
+  def format(number)
+    number == nil ? "" : '%.2f' % number
   end
 end
