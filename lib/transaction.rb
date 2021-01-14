@@ -3,7 +3,7 @@
 require 'date'
 
 class Transaction
-  attr_reader :value, :date, :credit, :debit, :balance
+  attr_reader :date, :credit, :debit, :balance
 
   def initialize(credit: nil, debit: nil, balance: nil, date: nil)
     @credit = credit
