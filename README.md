@@ -16,6 +16,10 @@ $ bundle
 $ irb
 $ require './lib/account.rb'
 ```
+To run tests: 
+```
+$ rspec
+```
 
 ### Example usage
 
