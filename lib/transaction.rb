@@ -1,12 +1,15 @@
 # frozen_string_literal: true
 
+require 'date'
+
 class Transaction
   attr_reader :value, :date, :credit, :debit, :balance
 
-  def initialize(credit: nil, debit: nil, balance: nil)
+  def initialize(credit: nil, debit: nil, balance: nil, date: nil)
     @credit = credit
     @debit = debit
     @balance = '%.2f' % balance
-    @date = Time.now.strftime('%d/%m/%Y')
+    @date = date
   end
+
 end
