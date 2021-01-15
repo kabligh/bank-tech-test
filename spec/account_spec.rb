@@ -31,8 +31,9 @@ describe Account do
     end
 
     it 'adds the amount to the transaction credit' do
-      expect(transaction).to receive(:new).with(credit: 1000, balance: 1000, date: '12/01/2021')
-      account.deposit(1000, '12/01/2021')
+      allow(account).to receive(:create_date).and_return("12/01/2021")
+      expect(transaction).to receive(:new).with(credit: 1000, balance: 1000, date: "12/01/2021")
+      account.deposit(1000)
     end
   end
 
@@ -59,11 +60,12 @@ describe Account do
 
     text = "date || credit || debit || balance\n"\
     "12/01/2021 ||  || 500.00 || 500.00\n"\
-    "11/01/2021 || 1000.00 ||  || 1000.00\n"
+    "12/01/2021 || 1000.00 ||  || 1000.00\n"
 
     it 'prints transactions in correct format' do
-      account.deposit(1000, '11/01/2021')
-      account.withdraw(500, '12/01/2021')
+      allow(account).to receive(:create_date).and_return("12/01/2021")
+      account.deposit(1000)
+      account.withdraw(500)
       expect { account.print_statement }.to output(text).to_stdout
     end
   end

@@ -13,15 +13,15 @@ class Account
     @transaction_history = []
   end
 
-  def deposit(amount, date = nil)
+  def deposit(amount)
     @balance += amount
-    @transaction_history << create_credit(amount, date)
+    @transaction_history << create_credit(amount)
   end
 
-  def withdraw(amount, date = nil)
+  def withdraw(amount)
     raise 'Not enough funds' if amount > @balance
     @balance -= amount
-    @transaction_history << create_debit(amount, date)
+    @transaction_history << create_debit(amount)
   end
 
   def print_statement(statement_class: Statement)
@@ -31,15 +31,15 @@ class Account
 
   private
 
-  def create_credit(amount, date)
-    @transaction.new(credit: amount, balance: @balance, date: create(date))
+  def create_credit(amount)
+    @transaction.new(credit: amount, balance: @balance, date: create_date)
   end
 
-  def create_debit(amount, date)
-    @transaction.new(debit: amount, balance: @balance, date: create(date))
+  def create_debit(amount)
+    @transaction.new(debit: amount, balance: @balance, date: create_date)
   end
 
-  def create(date)
-    date == nil ? Time.now.strftime('%d/%m/%Y') : Time.parse(date).strftime("%d/%m/%Y")
+  def create_date
+    Time.now.strftime('%d/%m/%Y')
   end
 end
